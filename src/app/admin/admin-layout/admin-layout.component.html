@@ -1,0 +1,26 @@
+<mat-drawer-container class="container">
+    <mat-drawer mode="side" opened>
+        <p>Ciname</p>
+        <mat-list>
+            <mat-list-item> <a routerLink="/admin/movies">Movies</a> </mat-list-item>
+            <mat-list-item> <a routerLink="/admin/add">Users</a> </mat-list-item>
+            <mat-list-item> Paprika </mat-list-item>
+        </mat-list>
+
+    </mat-drawer>
+    <mat-drawer-content>
+        <h3>Demo button</h3>
+
+        <button mat-raised-button>Basic</button>
+        <button mat-raised-button color="primary">Primary</button>
+        <button mat-raised-button color="accent">Accent</button>
+        <button mat-raised-button color="warn">Warn</button>
+        <button mat-raised-button disabled>Disabled</button>
+        <a mat-raised-button href="https://www.google.com/" target="_blank">Link</a>
+    </mat-drawer-content>
+</mat-drawer-container>
+
+
+<br>
+<hr> <br>
+<router-outlet> </router-outlet>

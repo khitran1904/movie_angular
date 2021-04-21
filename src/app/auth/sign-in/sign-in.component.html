@@ -1,0 +1,33 @@
+<h3>Sign In</h3>
+
+<pre> {{signinForm.value | json }} </pre>
+
+<form [formGroup]="signinForm"  (ngSubmit)="handleSignin()" >
+    <mat-form-field appearance="fill">
+        <mat-label>Tài khoản</mat-label>
+        <input matInput placeholder="Tài khoản" formControlName="taikhoan">
+        <mat-error *ngIf="signinForm.get('taikhoan')?.invalid">
+            <span *ngIf="signinForm.get('taikhoan')?.errors?.minlength ||
+            signinForm.get('taikhoan')?.errors?.maxlength">
+            Tài kHoản từ 3 đến 20 kí tự
+        </span>
+        </mat-error>
+    </mat-form-field >
+
+    <mat-form-field appearance="fill">        
+        <mat-label>Mật khẩu</mat-label>
+        <input matInput placeholder="Mật khẩu" formControlName="matkhau" >
+        <mat-error *ngIf="signinForm.get('matkhau')?.invalid">
+            <span *ngIf="signinForm.get('matkhau')?.invalid">
+            mật khẩu không đk để trống
+            </span>
+            <span *ngIf="signinForm.get('matkhau')?.errors?.minlength ||
+            signinForm.get('matkhau')?.errors?.maxlength">
+            Tài kHoản từ 3 đến 20 kí tự
+            </span>
+        </mat-error>
+    </mat-form-field>
+
+    <button>Đăng nhập</button>
+    <button type="button" >Đăng nhập 2 không submit</button>
+</form>

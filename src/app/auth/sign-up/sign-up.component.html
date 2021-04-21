@@ -1,0 +1,64 @@
+<p>sign-up Form</p>
+
+
+<!-- ngForm cung cấp các phương thức làm việc với form -->
+<!-- signupForm.value => {taikhoan:123} -->
+<pre> {{signupForm.value | json }} </pre>
+
+<form #signupForm='ngForm' class="container" (ngSubmit)="handleSignUp()" >
+    <mat-form-field appearance="fill">
+        <mat-label>Tài khoản</mat-label>
+        <input matInput placeholder="Tài khoản" name="taikhoan" #taikhoan=ngModel  ngModel required
+        minlength="3" maxlength="20">
+        <mat-error *ngIf="taikhoan.invalid">
+            <span *ngIf="taikhoan.errors?.required"> taikhoan không đk để trống </span>
+            <span *ngIf="taikhoan.errors?.minlength || taikhoan.errors?.maxlength "> taikhoan phải có từ 3 đến 20 kí tự </span>
+        </mat-error>
+        <!-- <pre>
+            {{ taikhoan.errors | json}}
+        </pre> -->
+        <!-- không xài thư viện thì phải handle dirty và touched -->
+        <!-- <div *ngIf="taikhoan.invalid && (taikhoan.dirty || taikhoan.touched)">
+            tài khoản ko đk để trống
+        </div> -->
+    </mat-form-field >
+    
+    <mat-form-field appearance="fill">        
+        <mat-label>Mật khẩu</mat-label>
+        <input matInput placeholder="Mật khẩu" name="matkhau" #matkhau=ngModel ngModel required
+        minlength="3" maxlength="20" >
+        <mat-error *ngIf="matkhau.invalid">
+            <span *ngIf="matkhau.errors?.required"> matkhau không đk để trống </span>
+            <span *ngIf="matkhau.errors?.minlength || matkhau.errors?.maxlength "> mật khẩu phải có từ 3 đến 20 kí tự </span>
+        </mat-error>
+    </mat-form-field>
+    
+    <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Email" name="email" #email=ngModel  ngModel required
+        minlength="3" maxlength="20" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+        <mat-error *ngIf="email.invalid">
+            <span *ngIf="email.errors?.required"> email không đk để trống </span>
+            <span *ngIf="email.errors?.minlength || email.errors?.maxlength "> email phải có từ 3 đến 20 kí tự </span>
+            <span *ngIf="email.errors?.pattern">email không đúng định dạng</span>
+        </mat-error>
+    </mat-form-field >
+
+    <mat-form-field appearance="fill">
+        <mat-label>Họ Tên</mat-label>
+        <input matInput placeholder="Họ Tên" name="name" #name=ngModel  ngModel required >
+        <mat-error *ngIf="name.invalid">
+            <span *ngIf="name.errors?.required"> name không đk để trống </span>
+        </mat-error>
+    </mat-form-field >
+    <mat-form-field appearance="fill">
+        <mat-label>Số điện thoại</mat-label>
+        <input matInput placeholder="Số điện thoại" name="phone" #phone=ngModel  ngModel required >
+        <mat-error *ngIf="phone.invalid">
+            <span *ngIf="phone.errors?.required"> phone không đk để trống </span>
+        </mat-error>
+    </mat-form-field >
+
+    <!--  Chặn đăng kí -->
+    <button [disabled] = "signupForm.invalid" >Đăng kí</button>
+</form>
